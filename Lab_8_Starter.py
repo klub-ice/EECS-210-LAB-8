@@ -86,9 +86,9 @@ def transitive_closure(M):
 
 def warshall(M):
     # Implement the Warshall algorithm here
-    for k in range(len(M)):
-        for i in range(len(M)):
-            for j in range(len(M)):
+    for i in range(len(M)):
+        for j in range(len(M)):
+            for k in range(len(M)):
                 M[i][j] = M[i][j] or (M[i][k] and M[k][j])
 
 
