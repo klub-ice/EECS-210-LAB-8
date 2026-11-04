@@ -75,10 +75,31 @@ def print_matrix(M1, M2):
         print()
         
 # ----------------- YOUR ADDED CODE BELOW -----------------
+def transitive_closure(M):
+    # Implement the transitive closure algorithm here
+    for i in range(len(M)):
+        for j in range(len(M)):
+            if M[i][j] == 1:
+                for k in range(len(M)):
+                    if M[j][k] == 1:
+                        M[i][k] = 1
+
+def warshall(M):
+    # Implement the Warshall algorithm here
+    for k in range(len(M)):
+        for i in range(len(M)):
+            for j in range(len(M)):
+                M[i][j] = M[i][j] or (M[i][k] and M[k][j])
 
 
 def main():
     matrix = get_square_matrix(ints=True) #use this for both algorithms
+    matrix1 = [row[:] for row in matrix]  # Create a copy of the matrix
+    matrix2 = [row[:] for row in matrix]  # Create another copy of the matrix
+
+    transitive_closure(matrix1)
+    warshall(matrix2)
+    print_matrix(matrix1, matrix2)
 
 if __name__ == "__main__":
     main()
